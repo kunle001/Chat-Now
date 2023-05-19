@@ -1,48 +1,44 @@
 # Chat Now
 
-* Design Type: Monolth
-* System Architecture: ....pending
+**Design Type:** Monolithic
+**System Architecture:** Pending
 
-### App description
+## App Description
+Chat Now is a node.js application that enables live chat between individuals and groups. All conversations are saved in a database.
 
-- this application is built with node.js, it implements live chat between two individuals and a many people in a room/Group, all conversations are saved on a Database. 
+## Functionalities Embedded
+### 1. Authentication
+- Sign up
+- Login
+- Logout
+- Reset Password
+- Confirmation Email
 
-# Functionalities Embeded
+#### User Profile
+- ID
+- Avatar
+- Display Full Name
+- Email Address
+- Username
+- Category of Writer
+- Bio
 
-## 1. AUTHENTICATION
-  * Sign up
-  * Login 
-  * Logout
-  * Reset Password
-  * Confirmation Email
-  ### User Profile
-    - ID 
-    - Avatar
-    - Display Full name
-    - Email Address
-    - username 
-    - Category of Writer
-    - Bio
+### 2. Rooms to Join
+- ID
+- Room Owner
+- Date of Creation
+- Room Title
+- Pack Description
+- CRUD Operations
+- Room Participants
 
-## 2. Rooms to join
-    -ID
-    - Room Owner
-    -Date of creation
-    - Room title
-    - Pack Description
-    - CRUD Operations.
-    - Room participants
+## Tools
+- **DevOps:** Docker, Kubernetes, Digital Ocean
+- **Database:** MongoDB
+- **Language:** JavaScript
+- **Architecture:** Monolithic
 
-
-### Tools 
-```
-DevOps: Docker,Kubernetes, Digital ocean
-Database: MongoDB,
-Language: Java Script,
-Archetecture: Monolith
-```
-
-## Other tools
-```
-Express.js,Node.js, socket.io
-```
+## Other Tools
+- Express.js
+- Node.js
+- Socket.IO
