@@ -3,7 +3,7 @@ import http from 'http';
 import { Server } from 'socket.io';
 import { fileURLToPath } from 'url';
 import path from 'path';
-import { userJoin, userLeave, getRoomUsers } from './utils/users.js';
+import { userJoin, userLeave, getRoomUsers, getCurrentUser } from './utils/users.js';
 import { formatMessage } from './utils/messages.js'
 
 
@@ -21,6 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 const botName = 'Coding Kunle'
 
 io.on('connection', (socket) => {
+
   // socket represents an actual user
   socket.on('joinRoom', ({ username, roomName }) => {
     const user = userJoin(socket.id, username, roomName);
@@ -35,8 +36,28 @@ io.on('connection', (socket) => {
       room: user.room,
       users: getRoomUsers(user.room)
     })
+  });
+
+  socket.on('chatMessage', (msg) => {
+    const user = getCurrentUser(socket.id);
+
+    io.to(user.room).emit('message', formatMessage(user.username, msg));
+  })
+
+  socket.on('disconect', () => {
+    const user = userLeave(socket.id);
+
+    if (user) {
+      io.to(user.room).emit('message', formatMessage(botName, `${user.username} has left the chat`));
+      io.to(user.room).emit('roomUsers', {
+        room: user.room,
+        users: getRoomUsers(user.room)
+      })
+    };
+
   })
 });
+
 
 const port = 3000;
 
