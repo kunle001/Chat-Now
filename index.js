@@ -18,7 +18,9 @@ const __dirname = path.dirname(__filename);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-const botName = 'Coding Kunle'
+const botName = 'Coding Kunle';
+
+// Connecting Database first
 
 io.on('connection', (socket) => {
 
